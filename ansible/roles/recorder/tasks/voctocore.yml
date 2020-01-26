@@ -1,0 +1,32 @@
+---
+- name: create voctocore config
+  template: src="voctomix2-config/voctocore-config.ini.j2"
+            dest="/opt/voctomix2/voctocore-config.ini"
+            mode=0644 owner=root group=root
+  when: voctomix_sources is defined
+
+- name: create voctocore systemd-unit
+  template: src="voctomix2-systemd-units/voctomix2-voctocore.service.j2"
+            dest="/etc/systemd/system/voctomix2-voctocore.service"
+            mode=0644 owner=root group=root
+
+- name: reload systemd daemon
+  command: systemctl daemon-reload
+  changed_when: false
+
+- name: enable & (re)start voctomix2-voctocore.service when in voctomix-mode
+  service: name=voctomix2-voctocore.service
+           enabled=yes
+           state=restarted
+  when: encodermode is defined and encodermode == 'hd-voctomix2'
+
+- name: disable & stop voctomix2-voctocore.service when not in voctomix-mode
+  service: name=voctomix2-voctocore.service
+           enabled=no
+           state=stopped
+  when: encodermode is not defined or encodermode != 'hd-voctomix2'
+
+- name: create voctomix2-status script
+  template: src="voctomix2-scripts/voctomix-status.j2"
+            dest="/usr/bin/voctomix2-status"
+            mode=0755 owner=root group=root

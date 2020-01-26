@@ -1,0 +1,6 @@
+---
+- include: general.yml
+- include: packages.yml
+- include: voctomix.yml
+- include: voctocore.yml
+- include: voctogui.yml
