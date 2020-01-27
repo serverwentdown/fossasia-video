@@ -3,4 +3,5 @@
 - include: packages.yml
 - include: voctomix.yml
 - include: voctocore.yml
-- include: voctogui.yml
+- include: artwork.yml
+  #- include: voctogui.yml

@@ -1,21 +1,22 @@
 ---
 - name: installed packages required to be a mixer
-  apt: name={{ item }} state=latest
-  with_items:
-    - gstreamer1.0-plugins-bad
-    - gstreamer1.0-plugins-base
-    - gstreamer1.0-plugins-good
-    - gstreamer1.0-plugins-ugly
-    - gstreamer1.0-alsa
-    - gstreamer1.0-pulseaudio
-    - gstreamer1.0-tools
-    - libgstreamer1.0-0
-    - python3
-    - python3-gi
-    - python3-gi-cairo
-    - python3-pyinotify
-    - python3-scipy
-    - python3-sdnotify
-    - gir1.2-gstreamer-1.0
-    - gir1.2-gst-plugins-base-1.0
-    - gir1.2-gtk-3.0
+  apt:
+    state: latest
+    name:
+      - gstreamer1.0-plugins-bad
+      - gstreamer1.0-plugins-base
+      - gstreamer1.0-plugins-good
+      - gstreamer1.0-plugins-ugly
+      - gstreamer1.0-alsa
+      - gstreamer1.0-pulseaudio
+      - gstreamer1.0-tools
+      - libgstreamer1.0-0
+      - python3
+      - python3-gi
+      - python3-gi-cairo
+      - python3-pyinotify
+      - python3-scipy
+      - python3-sdnotify
+      - gir1.2-gstreamer-1.0
+      - gir1.2-gst-plugins-base-1.0
+      - gir1.2-gtk-3.0

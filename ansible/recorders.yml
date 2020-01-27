@@ -1,0 +1,4 @@
+---
+- hosts: recorders
+  roles:
+    - role: recorder

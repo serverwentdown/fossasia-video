@@ -1,0 +1,5 @@
+
+[recorders]
+#pricklypear
+user@10.20.0.117 room_id=test
+#voctomix_sources="[ { 'name': 'audio', 'kind': 'tcp', 'volume': '1.0' }, { 'name': 'cam1', 'kind': 'v4l2', 'device': '/dev/v4l/by-id/usb-Creative_Labs_VF0470_Live__Cam_Notebook-video-index0', 'width': '640', 'height': '480', 'framerate': '30/1' }, { 'name': 'slides', 'kind': 'v4l2', 'device': '/dev/v4l/by-id/usb-VXIS_Inc_ACASIS-video-index0', 'width': '1280', 'height': '720', 'framerate': '30/1' } ]"
