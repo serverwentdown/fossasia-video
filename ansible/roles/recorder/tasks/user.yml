@@ -46,6 +46,7 @@
     - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-print-setup true
     - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-save-to-disk true
     - /usr/bin/gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+    - /usr/bin/gsettings set org.gnome.shell favorite-apps "['obs.desktop', 'org.gnome.Nautilus.desktop', 'firefox.desktop']"
     - /usr/bin/gsettings set org.gnome.desktop.session idle-delay 0
   become: yes
   become_user: mixer

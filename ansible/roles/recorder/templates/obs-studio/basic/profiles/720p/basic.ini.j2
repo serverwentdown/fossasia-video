@@ -21,7 +21,12 @@ OBSBasic.Transition={\n    "bindings": [\n        {\n            "key": "OBS_KEY
 [SimpleOutput]
 RecFormat=mkv
 RecQuality=Small
+{% if record_fast %}
 RecEncoder=x264_lowcpu
+{% else %}
+RecEncoder=x264
+{% endif %}
+FilePath={{ mixer_user.home }}/Videos/{{ event.id }}/{{ room_id }}
 
 [AdvOut]
 TrackIndex=1

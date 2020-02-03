@@ -5,13 +5,22 @@
     dest: "{{ mixer_user.home }}/.config/obs-studio/{{ item }}"
     state: directory
     recurse: yes
-    owner: root
-    group: root
+    owner: mixer
+    group: mixer
     mode: u=rwx,g=rx,o=rx
   with_items:
     - basic/profiles/1080p
     - basic/profiles/720p
     - basic/scenes
+
+- name: create videos directory
+  file:
+    dest: "{{ mixer_user.home }}/Videos/{{ event.id }}/{{ room_id }}"
+    state: directory
+    recurse: yes
+    owner: mixer
+    group: mixer
+    mode: u=rwx,g=rx,o=rx
 
 - name: generate base obs configuration files
   template:

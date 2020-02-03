@@ -2,16 +2,17 @@
 
 - name: create artwork directory
   file:
-    dest: /opt/artwork
+    dest: "/opt/artwork/{{ event.id }}"
     state: directory
+    recurse: yes
     owner: root
     group: root
     mode: u=rwx,g=rx,o=rx
 
 - name: copy backgrounds
   copy:
-    src: ../../../artwork/{{ event.id }}/{{ item }}.png
-    dest: /opt/artwork/
+    src: "../../../artwork/{{ event.id }}/{{ item }}.png"
+    dest: "/opt/artwork/{{ event.id }}"
     owner: root
     group: root
     mode: u=rw,g=r,o=r
