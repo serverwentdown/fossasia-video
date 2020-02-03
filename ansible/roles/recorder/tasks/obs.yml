@@ -1,0 +1,34 @@
+---
+
+- name: create obs directory
+  file:
+    dest: "{{ mixer_user.home }}/.config/obs-studio/{{ item }}"
+    state: directory
+    recurse: yes
+    owner: root
+    group: root
+    mode: u=rwx,g=rx,o=rx
+  with_items:
+    - basic/profiles/1080p
+    - basic/profiles/720p
+    - basic/scenes
+
+- name: generate base obs configuration files
+  template:
+    src: "obs-studio/{{ item }}.j2"
+    dest: "{{ mixer_user.home }}/.config/obs-studio/{{ item }}"
+    owner: mixer
+    group: mixer
+    mode: u=rw,g=r,o=r
+  with_items:
+    - global.ini
+    - basic/profiles/1080p/basic.ini
+    - basic/profiles/720p/basic.ini
+
+- name: generate event obs configuration files
+  template: 
+    src: "obs-studio/basic/scenes/event_id.json.j2"
+    dest: "{{ mixer_user.home }}/.config/obs-studio/basic/scenes/{{ event.id }}.json"
+    owner: mixer
+    group: mixer
+    mode: u=rw,g=r,o=r

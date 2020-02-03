@@ -1,0 +1,5 @@
+---
+- hosts: recorders
+  roles:
+    - role: recorder
+    - role: monitoring-client

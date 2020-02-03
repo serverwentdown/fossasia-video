@@ -1,0 +1,9 @@
+---
+
+event:
+  id: 2020.fossasia.org
+  title: FOSSASIA Summit 2020
+
+# Meta
+
+ansible_python_interpreter: auto

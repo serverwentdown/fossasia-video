@@ -1,0 +1,6 @@
+[recorders:children]
+testgroup
+
+[testgroup]
+#user@10.10.2.5 room_id=test
+ambrose@10.10.0.90 room_id=test

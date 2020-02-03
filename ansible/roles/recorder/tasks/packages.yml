@@ -1,0 +1,13 @@
+---
+
+- name: install general packages
+  apt:
+    state: latest
+    name:
+      - git
+
+- name: install packages required to be a recorder
+  apt:
+    state: latest
+    name:
+      - obs-studio

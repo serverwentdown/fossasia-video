@@ -1,0 +1,52 @@
+---
+
+- name: create mixer group
+  group:
+    name: mixer 
+
+- name: create mixer user with password mixer
+  user:
+    name: mixer
+    group: mixer
+    comment: Mixer
+    shell: /bin/bash
+    password: $6$8tFX.bXNC4348gTR$8e33nlbdydXVvFZ0VmaN9Y7H5HjMduu1Z4Ofjh13PhRFGLJ6ojubsHh1SuLZSHWzWMeUxIPEyVX6VH.UaCZe8/
+  register: mixer_user
+
+- name: enable gdm autologin to mixer user
+  copy:
+    src: gdm.conf
+    dest: /etc/gdm3/daemon.conf
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+
+- name: check sleep settings
+  command:
+    cmd: /usr/bin/gsettings get org.gnome.desktop.session idle-delay
+  become: yes
+  become_user: mixer
+  register: idle_delay_setting
+  changed_when: false
+
+- name: prevent mixer from sleeping
+  command:
+    cmd: "{{ item }}"
+  environment:
+    # Required only when setting gsettings
+    DBUS_SESSION_BUS_ADDRESS: "unix:path=/run/user/{{ mixer_user.uid }}/bus"
+  with_items:
+    - /usr/bin/gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
+    - /usr/bin/gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
+    - /usr/bin/gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
+    - /usr/bin/gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'nothing'
+    - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-lock-screen true
+    - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-log-out true
+    - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-printing true
+    - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-print-setup true
+    - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-save-to-disk true
+    - /usr/bin/gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+    - /usr/bin/gsettings set org.gnome.desktop.session idle-delay 0
+  become: yes
+  become_user: mixer
+  when: "'uint32 0' not in idle_delay_setting.stdout"
