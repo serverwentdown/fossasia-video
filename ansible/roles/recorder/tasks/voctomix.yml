@@ -1,17 +1,21 @@
 ---
 
-# directories & code
 - name: create voctomix directories
-  file: dest={{ item }} state=directory
-        owner=root group=root
+  file:
+    dest: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: u=rwx,g=rx,o=rx
   with_items:
     - /opt/voctomix/scripts/
     - /opt/voctomix/release/
 
 - name: checkout voctomix release
-  git: repo=https://github.com/voc/voctomix
-       dest=/opt/voctomix/release/
-       version={{ voctomix.version }}
-       force=yes
-       accept_hostkey=yes
+  git:
+    repo: https://github.com/voc/voctomix
+    dest: /opt/voctomix/release/
+    version: "{{ voctomix.version }}"
+    force: yes
+    accept_hostkey: yes
 

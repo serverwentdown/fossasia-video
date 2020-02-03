@@ -1,0 +1,10 @@
+---
+
+- name: generate hosts file
+  template:
+    src: etc-hosts.j2
+    dest: /etc/hosts
+
+- name: set hostname to room_id
+  hostname:
+    name: "room-{{ room_id }}"

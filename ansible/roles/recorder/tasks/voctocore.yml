@@ -19,10 +19,10 @@
   service: name=voctomix-voctocore.service
            enabled=yes
            state=restarted
-  when: voctocore_enabled is defined
+  when: voctocore_enabled == true
 
 - name: disable & stop voctomix-voctocore.service
   service: name=voctomix-voctocore.service
            enabled=no
            state=stopped
-  when: voctocore_enabled is not defined
+  when: voctocore_enabled != true

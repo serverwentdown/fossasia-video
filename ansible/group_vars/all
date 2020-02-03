@@ -7,3 +7,6 @@ event:
 voctomix:
   version: "voctomix2"
 
+# Meta
+
+ansible_python_interpreter: auto

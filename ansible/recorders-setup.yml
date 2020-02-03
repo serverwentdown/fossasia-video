@@ -1,0 +1,12 @@
+---
+- hosts: recorders
+  roles:
+    - role: recorder
+    - role: monitoring-client
+  tasks:
+    - name: reboot after setup
+      reboot:
+  vars:
+    voctocore_enabled: false
+    voctogui_enabled: false
+

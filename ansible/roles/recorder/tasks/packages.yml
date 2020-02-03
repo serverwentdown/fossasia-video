@@ -1,5 +1,12 @@
 ---
-- name: installed packages required to be a mixer
+
+- name: install general packages
+  apt:
+    state: latest
+    name:
+      - git
+
+- name: install packages required to be a mixer
   apt:
     state: latest
     name:
@@ -8,8 +15,9 @@
       - gstreamer1.0-plugins-good
       - gstreamer1.0-plugins-ugly
       - gstreamer1.0-alsa
-      - gstreamer1.0-pulseaudio
+      - gstreamer1.0-libav
       - gstreamer1.0-tools
+      - gstreamer1.0-gl
       - libgstreamer1.0-0
       - python3
       - python3-gi

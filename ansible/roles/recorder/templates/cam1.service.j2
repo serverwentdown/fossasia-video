@@ -1,0 +1,15 @@
+# MANAGED BY ANSIBLE
+
+[Unit]
+Description = voctomix source cam1
+After=network.target
+
+[Service]
+Type = simple
+ExecStart = gst-launch-1.0 -v v4l2src device=/dev/v4l/by-id/usb-Creative_Labs_VF0470_Live__Cam_Notebook-video-index0 ! image/jpeg,width=640,height=480,framerate=30/1 ! jpegparse ! jpegdec ! videoscale ! videoconvert ! video/x-raw,format=I420,width=1280,height=720,framerate=30/1,pixel-aspect-ratio=1/1,interlace-mode=progressive ! queue ! mux. alsasrc device=hw:CARD=Notebook ! audio/x-raw,format=S16LE,rate=8000,channels=1 ! audioconvert mix-matrix="<<(float)1.0>, <(float)1.0>, <(float)0.0>, <(float)0.0>>" ! audioresample ! audio/x-raw,format=S16LE,rate=48000,channels=4 ! queue ! mux. matroskamux name=mux ! tcpclientsink host=localhost port=10000
+Restart = always
+RestartSec = 1s
+StartLimitInterval = 0
+
+[Install]
+WantedBy = multi-user.target

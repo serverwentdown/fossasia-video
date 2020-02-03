@@ -1,7 +1,0 @@
----
-
-- name: install general packages
-  apt:
-    state: latest
-    name:
-      - git

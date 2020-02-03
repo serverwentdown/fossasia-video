@@ -1,0 +1,39 @@
+---
+
+- name: create cam1 systemd-unit
+  template: src="cam1.service.j2"
+            dest="/etc/systemd/system/voctomix-cam1.service"
+            mode=0644 owner=root group=root
+
+- name: create slides systemd-unit
+  template: src="slides.service.j2"
+            dest="/etc/systemd/system/voctomix-slides.service"
+            mode=0644 owner=root group=root
+
+- name: reload systemd daemon
+  command: systemctl daemon-reload
+  changed_when: false
+
+- name: enable & (re)start voctomix-cam1.service
+  service: name=voctomix-cam1.service
+           enabled=yes
+           state=restarted
+  when: voctocore_enabled == true
+
+- name: disable & stop voctomix-cam1.service
+  service: name=voctomix-cam1.service
+           enabled=no
+           state=stopped
+  when: voctocore_enabled != true
+
+- name: enable & (re)start voctomix-slides.service
+  service: name=voctomix-slides.service
+           enabled=yes
+           state=restarted
+  when: voctocore_enabled == true
+
+- name: disable & stop voctomix-slides.service
+  service: name=voctomix-slides.service
+           enabled=no
+           state=stopped
+  when: voctocore_enabled != true

@@ -18,10 +18,10 @@
   service: name=voctomix-voctogui
            enabled=yes
            state=started
-  when: voctogui_enabled is defined
+  when: voctogui_enabled == true
 
 - name: disable & stop voctogui service
   service: name=voctomix-voctogui
            enabled=no
            state=stopped
-  when: voctogui_enabled is not defined
+  when: voctogui_enabled != true

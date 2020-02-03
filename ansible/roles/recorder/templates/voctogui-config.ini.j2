@@ -1,0 +1,32 @@
+[server]
+host=localhost
+
+[previews]
+width=280
+use=true
+
+[videodisplay]
+# Use VAAPI's renderer, requires VAAPI-based previews
+#system=vaapi
+# Use OpenGL - most performant
+system=gl
+# Use XVideo - oldschool
+#system=xv
+# Use simple X-Images - least performant
+#system=x
+
+[mainwindow]
+#width=800
+#height=600
+forcefullscreen=true
+vumeter=all
+
+[audio]
+#forcevolumecontrol=true
+#play=true
+
+[toolbar]
+close=false
+ports=true
+queues=true
+fullscreen=false

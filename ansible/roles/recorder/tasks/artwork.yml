@@ -1,14 +1,21 @@
 ---
 
 - name: create artwork directory
-  file: dest=/opt/voctomix/artwork state=directory
-        owner=root group=root mode=0755
+  file:
+    dest: /opt/voctomix/artwork
+    state: directory
+    owner: root
+    group: root
+    mode: u=rwx,g=rx,o=rx
 
 - name: copy backgrounds
-  copy: src=../../../artwork/{{ event.id }}/{{ item }}.png
-        dest=/opt/voctomix/artwork/
+  copy:
+    src: ../../../artwork/{{ event.id }}/{{ item }}.png
+    dest: /opt/voctomix/artwork/
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
   with_items:
     - side-by-side-reverse
     - side-by-side
     - blank
-

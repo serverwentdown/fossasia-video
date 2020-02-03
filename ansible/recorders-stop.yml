@@ -3,3 +3,7 @@
   roles:
     - role: recorder
     - role: monitoring-client
+  vars:
+    voctocore_enabled: false
+    voctogui_enabled: false
+

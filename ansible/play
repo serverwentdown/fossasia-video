@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ansible-playbook -Kbf 1 -u user -i "$1" "$2"
