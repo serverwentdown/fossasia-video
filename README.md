@@ -3,6 +3,13 @@
 
 The FOSSASIA video recording setup
 
+## TODO
+
+- [ ] Write video crew guide
+- [ ] Call for and train video crew
+- [ ] Performance tweaks in Linux
+- [ ] Status, IO and CPU usage monitoring
+
 ## Overview
 
 ## Installing Debian
