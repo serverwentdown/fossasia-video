@@ -1,0 +1,7 @@
+---
+- hosts: recorders
+  roles:
+    - role: recorder
+    - role: monitoring-client
+  vars:
+    autostart: false

@@ -1,0 +1,8 @@
+---
+- include: chrome.yml
+  vars:
+    - apt_file: /etc/apt/sources.list.d/google-chrome.list
+- include: vscode.yml
+  vars:
+    - apt_file: /etc/apt/sources.list.d/vscode.list
+- include: packages.yml

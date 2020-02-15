@@ -1,0 +1,25 @@
+---
+- hosts: recorders
+  tasks:
+    - name: set permissions for .ssh directory
+      file:
+        path: "{{ ansible_env.HOME }}/.ssh"
+        state: directory
+        mode: u=rwx,g=-rwx,o=-rwx
+    - name: create authorized_keys file
+      file:
+        path: "{{ ansible_env.HOME }}/.ssh/authorized_keys"
+        state: touch
+        mode: u=rwx,g=r-wx,o=r-wx
+    - name: insert ambrose's public ssh key
+      blockinfile:
+        dest: "{{ ansible_env.HOME }}/.ssh/authorized_keys"
+        block: |
+          ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDDBsAEpJLRUzF9O58EkRFAe+WFp46SNEEz6ChOEkzWs+Vn4b60uKABXB60l56S1Ok6PHlNxyIlLuF+IXUOfalO+V9HXxZmjdHp7SibOXcEDFRDnCgGqnRTwd5zEbdMnZ9g0ia7NnIeaS7M5pXGtir7S86pNNaVWWnBvobDuc1As4NGIHa7hPHPOsPRgjNgB6YqaRq6a98j1yGghMiQJJvsBeZ0S00MZp9lfUiB+jrxhDgGyPsU5M9U+ObJmOFlaLx5XqZW3/5tTJoEmyD/vRV6IzOhhR6PPgGpQXJBdmrbJOKWtTwckwWE2xR+rs3J154OyZadkJ9+1aj/EKleTYs5GfDzGQeTb/wsyRz3tgTesFcXW/klVYVEcvZZxPvOoMPUK8vtYIt2LiFJov+/EQu5wfeilLURfZwKk2fBIC+CFUwg6ewogb4Ynvxv7++J11+7uMSOkuqu/0t/7rrv4TDt06dtA5oUNfZ5cUH0/H/KX48DkCp+mRI7S5uJ6majXZEm5Nmi7u+gOCSjAewe6Ex++I91MsX3WrgVG5OUffx/QTsLeRhT9ZMAlnED7lcTXNhDCEmJif87CQFucRnrkO9FvDnZG2i9721MLGo9Sf/M7AliwMH7fcVucgvY4AJuESspEjWjQn9YEqhp1cDb/PtNZtRl/v1TJOV4eQUDSWusdw== ambrose-yubikey
+    - name: prevent password login
+      become: yes
+      blockinfile:
+        dest: /etc/ssh/sshd_config
+        block: |
+          PasswordAuthentication no
+

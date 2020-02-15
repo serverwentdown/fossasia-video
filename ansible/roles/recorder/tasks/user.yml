@@ -1,10 +1,12 @@
 ---
 
 - name: create mixer group
+  become: yes
   group:
     name: mixer 
 
 - name: create mixer user with password mixer
+  become: yes
   user:
     name: mixer
     group: mixer
@@ -14,7 +16,8 @@
   register: mixer_user
 
 - name: enable gdm autologin to mixer user
-  copy:
+  become: yes
+  template:
     src: gdm.conf
     dest: /etc/gdm3/daemon.conf
     owner: root

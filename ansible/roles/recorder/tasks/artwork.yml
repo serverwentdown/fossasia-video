@@ -2,19 +2,17 @@
 
 - name: create artwork directory
   file:
-    dest: "/opt/artwork/{{ event.id }}"
+    dest: "{{ mixer_user.home }}/artwork/{{ event.id }}"
     state: directory
     recurse: yes
-    owner: root
-    group: root
     mode: u=rwx,g=rx,o=rx
+  become: yes
+  become_user: mixer
 
 - name: copy backgrounds
   copy:
     src: "../../../artwork/{{ event.id }}/{{ item }}.png"
-    dest: "/opt/artwork/{{ event.id }}"
-    owner: root
-    group: root
+    dest: "{{ mixer_user.home }}/artwork/{{ event.id }}"
     mode: u=rw,g=r,o=r
   with_items:
     - side-by-side
@@ -22,3 +20,5 @@
     - side-by-side-43
     - side-by-side-43-reverse
     - blank
+  become: yes
+  become_user: mixer

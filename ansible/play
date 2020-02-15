@@ -1,3 +1,5 @@
 #!/bin/sh
 
-ansible-playbook -Kbf 1 -i "$1" "$2"
+set -e
+
+ansible-playbook -Kf 4 -i "$1" "$2"

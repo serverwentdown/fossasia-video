@@ -11,7 +11,7 @@ OutputCY=1080
 Mode=Simple
 
 [Audio]
-SampleRate=48000
+SampleRate=44100
 
 [Hotkeys]
 OBSBasic.StartRecording={\n    "bindings": [\n        {\n            "control": true,\n            "key": "OBS_KEY_RETURN"\n        }\n    ]\n}
@@ -20,7 +20,8 @@ OBSBasic.Transition={\n    "bindings": [\n        {\n            "key": "OBS_KEY
 
 [SimpleOutput]
 RecFormat=mkv
-RecQuality=Small
+RecQuality=Stream
+VBitrate=3000
 {% if record_fast %}
 RecEncoder=x264_lowcpu
 {% else %}

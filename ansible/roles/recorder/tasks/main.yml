@@ -1,6 +1,6 @@
 ---
 - include: user.yml
-- include: hostname.yml
+#- include: hostname.yml
 - include: packages.yml
 - include: artwork.yml
 - include: obs.yml

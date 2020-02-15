@@ -1,6 +1,3 @@
-[recorders:children]
-testgroup
-
-[testgroup]
-#user@10.10.2.5 room_id=test
-ambrose@10.10.0.90 room_id=test
+[recorders]
+x220-01 ansible_host=fd11:f055:a514::2 ansible_user=opentech room_id= room_type=
+x230-01 ansible_host=fd11:f055:a514::3 ansible_user=opentech room_id=testroom1 room_type=special

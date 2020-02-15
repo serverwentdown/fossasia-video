@@ -1,0 +1,10 @@
+---
+
+- name: install editors
+  become: yes
+  apt:
+    state: latest
+    name:
+      - neovim
+      - emacs
+
