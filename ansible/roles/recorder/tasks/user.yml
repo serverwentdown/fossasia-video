@@ -44,7 +44,7 @@
     - /usr/bin/gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
     - /usr/bin/gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'nothing'
     - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-lock-screen true
-    - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-log-out true
+    - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-log-out false
     - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-printing true
     - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-print-setup true
     - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-save-to-disk true
@@ -53,4 +53,26 @@
     - /usr/bin/gsettings set org.gnome.desktop.session idle-delay 0
   become: yes
   become_user: mixer
-  when: "'uint32 0' not in idle_delay_setting.stdout"
+  #when: "'uint32 0' not in idle_delay_setting.stdout"
+
+# Credits: SuperQ, gerryd
+
+- name: prevent laptop from sleeping when lid is closed
+  become: yes
+  lineinfile:
+    dest: /etc/systemd/logind.conf
+    regexp: "^HandleLidSwitch"
+    line: "HandleLidSwitch=ignore"
+    state: present
+  notify: restart systemd-logind
+  when: autostart
+
+- name: allow laptop to sleep when lid is closed
+  become: yes
+  lineinfile:
+    dest: /etc/systemd/logind.conf
+    regexp: "^HandleLidSwitch"
+    line: "HandleLidSwitch=ignore"
+    state: absent
+  notify: restart systemd-logind
+  when: not autostart

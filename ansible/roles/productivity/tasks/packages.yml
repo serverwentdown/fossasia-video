@@ -7,4 +7,5 @@
     name:
       - neovim
       - emacs
+      - git
 

@@ -3,7 +3,11 @@
         "deinterlace_field_order": 0,
         "deinterlace_mode": 0,
         "enabled": true,
+{% if room_type == "EH2" %}
+        "flags": 2,
+{% else %}
         "flags": 0,
+{% endif %}
         "hotkeys": {
             "libobs.mute": [],
             "libobs.push-to-mute": [],
@@ -12,7 +16,7 @@
         },
         "id": "pulse_input_capture",
         "mixers": 255,
-        "monitoring_type": 0,
+        "monitoring_type": {{ monitoring_type }},
         "muted": false,
         "name": "Microphone",
         "private_settings": {},
@@ -21,7 +25,13 @@
         "push-to-talk": false,
         "push-to-talk-delay": 0,
         "settings": {
-            "device_id": "alsa_input.usb-Creative_Labs_VF0470_Live__Cam_Notebook-01.analog-mono"
+{% if room_type == "EH2" %}
+            "device_id": "alsa_input.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo"
+{% elif room_type == "TR9" %}
+            "device_id": "alsa_input.pci-0000_00_1b.0.analog-stereo"
+{% else %}
+            "device_id": "alsa_input.pci-0000_00_1b.0.analog-stereo"
+{% endif %}
         },
         "sync": 0,
         "volume": 1.0
@@ -39,7 +49,7 @@
         },
         "id": "pulse_input_capture",
         "mixers": 255,
-        "monitoring_type": 0,
+        "monitoring_type": {{ monitoring_type }},
         "muted": false,
         "name": "Slides Audio",
         "private_settings": {},
@@ -48,7 +58,13 @@
         "push-to-talk": false,
         "push-to-talk-delay": 0,
         "settings": {
+{% if room_type == "EH2" %}
             "device_id": "alsa_input.usb-VXIS_Inc_ACASIS-02.analog-stereo"
+{% elif room_type == "TR9" %}
+            "device_id": "alsa_input.usb-VXIS_Inc_ACASIS-02.analog-stereo"
+{% else %}
+            "device_id": "alsa_input.usb-VXIS_Inc_ACASIS-02.analog-stereo"
+{% endif %}
         },
         "sync": 0,
         "volume": 1.0
@@ -66,7 +82,7 @@
         },
         "id": "pulse_input_capture",
         "mixers": 255,
-        "monitoring_type": 0,
+        "monitoring_type": {{ monitoring_type }},
         "muted": true,
         "name": "Emergency Audio",
         "private_settings": {},
@@ -75,7 +91,13 @@
         "push-to-talk": false,
         "push-to-talk-delay": 0,
         "settings": {
+{% if room_type == "EH2" %}
             "device_id": "alsa_input.pci-0000_00_1b.0.analog-stereo"
+{% elif room_type == "TR9" %}
+            "device_id": "alsa_input.usb-046d_HD_Pro_Webcam_C920_CEB3336F-02.analog-stereo"
+{% else %}
+            "device_id": "alsa_input.usb-046d_HD_Pro_Webcam_C920_CEB3336F-02.analog-stereo"
+{% endif %}
         },
         "sync": 0,
         "volume": 1.0
@@ -861,7 +883,13 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "buffering": true,
+{% if room_type == "EH2" %}
                 "device_id": "/dev/v4l/by-id/usb-VXIS_Inc_ACASIS-video-index0",
+{% elif room_type == "TR9" %}
+                "device_id": "/dev/v4l/by-id/usb-VXIS_Inc_ACASIS-video-index0",
+{% else %}
+                "device_id": "/dev/v4l/by-id/usb-VXIS_Inc_ACASIS-video-index0",
+{% endif %}
                 "framerate": 65566,
                 "input": 0,
                 "pixelformat": 842093913,
@@ -937,7 +965,13 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "buffering": true,
-                "device_id": "/dev/v4l/by-id/usb-Creative_Labs_VF0470_Live__Cam_Notebook-video-index0",
+{% if room_type == "EH2" %}
+                "device_id": "/dev/video0",
+{% elif room_type == "TR9" %}
+                "device_id": "/dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_CEB3336F-video-index0",
+{% else %}
+                "device_id": "/dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_CEB3336F-video-index0",
+{% endif %}
                 "framerate": 65566,
                 "input": 0,
                 "pixelformat": 842093913,

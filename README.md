@@ -3,13 +3,6 @@
 
 The FOSSASIA video recording setup
 
-## TODO
-
-- [ ] Write video crew guide
-- [ ] Call for and train video crew
-- [ ] Performance tweaks in Linux
-- [ ] Status, IO and CPU usage monitoring
-
 ## Overview
 
 ## Installing Debian
@@ -62,7 +55,12 @@ To specify the room for a specific host, do the following:
 ```
 echo the_room_id > ~opentech/room_id
 echo teh_room_type > ~opentech/room_type
+# Example for Event Hall 2-1:
+echo EH2 > ~opentech/room_type
+echo EH2-1 > ~opentech/room_id
 ```
+
+See the [Video Equipment Google Sheet](https://docs.google.com/spreadsheets/d/1XLckJRG4ng2NoOfqy-EKca2LJdfC-Z6zfE6Q3FqKoM0/edit?usp=sharing) for the specific IDs.
 
 This step is optional. This and the following steps should be done for every change in room or setup of the laptop.
 

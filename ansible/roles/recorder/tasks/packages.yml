@@ -1,12 +1,5 @@
 ---
 
-- name: install general packages
-  become: yes
-  apt:
-    state: latest
-    name:
-      - git
-
 - name: install packages required to be a recorder
   become: yes
   apt:
