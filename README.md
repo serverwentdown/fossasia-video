@@ -60,7 +60,7 @@ echo EH2 > ~opentech/room_type
 echo EH2-1 > ~opentech/room_id
 ```
 
-See the [Video Equipment Google Sheet](https://docs.google.com/spreadsheets/d/1XLckJRG4ng2NoOfqy-EKca2LJdfC-Z6zfE6Q3FqKoM0/edit?usp=sharing) for the specific IDs.
+See the [Video Equipment Google Sheet](https://docs.google.com/spreadsheets/d/1XLckJRG4ng2NoOfqy-EKca2LJdfC-Z6zfE6Q3FqKoM0/edit?usp=sharing) for the specific IDs. To get edit access, DM @serverwentdown on Telegram. 
 
 This step is optional. This and the following steps should be done for every change in room or setup of the laptop.
 
