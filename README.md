@@ -3,6 +3,8 @@
 
 The FOSSASIA video recording setup
 
+Looking for the [video recorder's guide](guide.html)?
+
 ## Overview
 
 ## Installing Debian
