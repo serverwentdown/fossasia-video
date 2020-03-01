@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FOSSASIA Video Recorder's Guide</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+	<style>
+		html {
+			font-family: 'Open Sans', sans-serif;
+			font-size: 16px;
+			line-height: 1.8;
+		
+			max-width: 1200px;
+		}
+
+		big {
+			font-size: 1.5em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+			font-weight: bold;
+			text-align: center;
+		}
+
+		hr {
+			border: none;
+			border-top: 2px solid black;
+			margin: 1em;
+		}
+		hr.blank {
+			border: none;
+			margin: 2em 1em;
+		}
+
+		.shortcuts {
+			text-align: center;
+		}
+		.shortcuts table {
+			width: 100%;
+		}
+		.shortcuts table td,
+		.shortcuts table th {
+			width: calc(100% / 8);
+			padding: 0.25rem;
+		}
+		.shortcuts table th {
+			font-weight: normal;
+		}
+
+		.tile {
+			width: 6rem;
+			height: calc(6rem / 16 * 9);
+			margin: 0.25rem;
+		}
+		.tile.icon {
+			font-size: 2em;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.key {
+			font-weight: bold;
+			text-transform: uppercase;
+
+			border: 2px solid black;
+			border-radius: 6px;
+			padding: 0.05rem 0.4rem;
+			line-height: 2em;
+		}
+		.key-combination {
+			font-weight: bold;
+		}
+
+		.row {
+			display: flex;
+		}
+		.column {
+			flex-grow: 1;
+			width: 50%;
+		}
+
+		.tag {
+			display: inline-block;
+			margin: 0 0.2em;
+
+			width: 1.4em;
+			height: 1.5em;
+			text-align: center;
+			font-weight: bold;
+			border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+		}
+
+		ol.taglist {
+			list-style: none;
+			counter-reset: tag-counter;
+		}
+		ol.taglist > li {
+			counter-increment: tag-counter;
+			position: relative;
+		}
+		ol.taglist > li::before {
+			position: absolute;
+			left: -1.6em;
+
+			width: 1.4em;
+			height: 1.5em;
+			text-align: center;
+			font-weight: bold;
+			border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+		}
+		ol.taglist.tag-t > li::before {
+			content: "T" counter(tag-counter);
+		}
+		ol.taglist.tag-s > li::before {
+			content: "S" counter(tag-counter);
+		}
+			
+	</style>
+</head>
+<body>
+	<section class="shortcuts">
+		<table>
+			<tr>
+				<th></th>
+				<th>
+					<svg width="48" height="27" viewBox="0 0 48 27" class="tile">
+						<rect width="48" height="27" fill="black" fill-opacity="0.1"/>
+						<rect x="2" y="2" width="35" height="20" fill="black" fill-opacity="0.75"/>
+						<rect x="39" y="14" width="7" height="11" fill="black" fill-opacity="0.75"/>
+						<text x="42.5" y="22" fill="white" text-anchor="middle" style="font-size: 7px; font-weight: bold;">V</text>
+						<text x="19.5" y="15" fill="white" text-anchor="middle" style="font-size: 8px; font-weight: bold;">S</text>
+					</svg>
+					<div>Slides Primary</div>
+				</th>
+				<th>
+					<svg width="48" height="27" viewBox="0 0 48 27" class="tile">
+						<rect width="48" height="27" fill="black" fill-opacity="0.1"/>
+						<rect x="2" y="2" width="27" height="23" fill="black" fill-opacity="0.75"/>
+						<rect x="31" y="16" width="15" height="9" fill="black" fill-opacity="0.75"/>
+						<text x="38.5" y="23" fill="white" text-anchor="middle" style="font-size: 7px; font-weight: bold;">S</text>
+						<text x="15.5" y="16.5" fill="white" text-anchor="middle" style="font-size: 8px; font-weight: bold;">V</text>
+					</svg>
+					<div>Video Primary</div>
+				</th>
+				<th>
+					<svg width="48" height="27" viewBox="0 0 48 27" class="tile">
+						<rect width="48" height="27" fill="black" fill-opacity="0.75"/>
+						<text x="24" y="17" fill="white" text-anchor="middle" style="font-size: 8px; font-weight: bold;">S</text>
+					</svg>
+					<div>Slides Only</div>
+				</th>
+				<th>
+					<svg width="48" height="27" viewBox="0 0 48 27" class="tile">
+						<rect width="48" height="27" fill="black" fill-opacity="0.75"/>
+						<text x="24" y="17" fill="white" text-anchor="middle" style="font-size: 8px; font-weight: bold;">V</text>
+					</svg>
+					<div>Video Only</div>
+				</th>
+				<th>
+					<svg width="48" height="27" viewBox="0 0 48 27" class="tile">
+						<rect width="48" height="27" fill="black" fill-opacity="0.75"/>
+					</svg>
+					<div>Blank</div>
+				</th>
+				<th>
+					<span class="tile icon">
+						<i data-feather="video" width="32" height="32"></i>
+					</span>
+					<div>Start Recording</div>
+				</th>
+				<th>
+					<span class="tile icon">
+						<i data-feather="stop-circle" width="32" height="32"></i>
+					</span>
+					<div>Stop Recording</div>
+				</th>
+			</tr>
+			<tr>
+				<th><big>16:9</big></th>
+				<td><span class="key">F1</span></td>
+				<td><span class="key">F2</span></td>
+				<td><span class="key">F3</span></td>
+				<td><span class="key">F4</span></td>
+
+				<td rowspan="2"><span class="key">F9</span></td>
+				<td rowspan="2" class="key-combination"><span class="key">Ctrl</span><div> + </div><span class="key">Enter</span></td>
+				<td rowspan="2" class="key-combination"><span class="key">Ctrl</span><div> + </div><span class="key">Backspace</span></td>
+			</tr>
+			<tr>
+				<th><big>4:3</big></th>
+				<td><span class="key">F5</span></td>
+				<td><span class="key">F6</span></td>
+				<td><span class="key">F7</span></td>
+				<td><span class="key">F8</span></td>
+			</tr>
+			<tr>
+				<th><strong>Example Usage</strong></th>
+				<td>Slides show important points</td>
+				<td>Presenter is talking or gesturing a lot</td>
+				<td>Slides show small text or code demos</td>
+				<td>Q&amp;A or presenter is talking beyond the slides</td>
+				<td>Rarely used</td>
+			</tr>
+		</table>
+	</section>
+
+	<hr class="blank">
+	
+	<div class="row">
+		<div class="column">
+
+			<section>
+				<h1>OBS Basics</h1>
+				<ul>
+					<li>Start recording before the speaker starts talking</li>
+					<li>Stop recording after the Q&amp;A</li>
+					<li>
+						Perform frequent checks to ensure
+						<ul>
+							<li>The speaker microphone is working (either with the headphones or level meters) <span class="tag">T1</span></li>
+							<li>The slides and video are not frozen <span class="tag">T2</span></li>
+							<li>The recording is still ongoing ("REC" timer in the status bar)</li>
+						</ul>
+					<li>Look out for all cabling, ensure they are safe and secure</li>
+					<li>Use the correct scene for the correct aspect ratio. Aspect ratio is incorrect when squares or circles look warped</li>
+				</ul>
+			</section>
+
+			<section>
+				<h1>OBS Issues</h1>
+				<ul>
+					<li>Look out for the "Encoding overloaded!" message in the status bar <span class="tag">T3</span></li>
+					<li>
+						Look out for out of sync audio and video within OBS
+						<ul>
+							<li>Usually not a problem, but inform the chat group <span class="tag">S1</span></li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h1>Standard Procedures</h1>
+				<ol class="taglist tag-s">
+					<li>Inform the chat group on every issue encountered, so we can account for all the encountered failure scenarios and improve the setup</li>
+				</ol>
+			</section>
+
+			<section>
+				<h1>Notes</h1>
+				<ol class="taglist tag-n">
+					<li>Might need to wait a while for video to reappear or audio to be heard. If it doesn't after 30s, restart OBS</li>
+					<li>
+						When you need to leave urgently
+						<ul>
+							<li>Try to get another volunteer to temporarily replace you</li>
+							<li>Use the "Slides Primary" scene and leave it recording</li>
+						</ul>
+					</li>
+				</ol>
+			</section>
+		</div>
+
+		<div class="column">
+
+			<section>
+				<h1>Troubleshooting</h1>
+				<ol class="taglist tag-t">
+					<li>
+						<ul>
+							<li>Check that the "Microphone" and "Slides Audio" audio sources are not muted or at a low volume</li>
+							<li>Check that all the cables are securely plugged in <span class="tag">N1</span></li>
+							<li>
+								Click on <i data-feather="settings" height="16" width="16"></i> &#9656; "Properties" and ensure the correct device is selected <span class="tag">N1</span>
+								<ul>
+									<li>"Microphone" audio source is either "PCM2902 Audio Codec Analog Stereo" or "Built-in Audio Analog Stereo"</li>
+									<li>"Slides Audio" audio source is "ACASIS"</li>
+								</ul>
+							</li>
+							<li>
+								If above fails, switch to emergency audio with the following steps:
+								<ul>
+									<li>Unmute "Emergency Audio"</li>
+									<li>Mute "Microphone" and "Slides Audio"</li>
+									<li>Once the talk ends, fix the problems</li>
+								</ul>
+							</li>
+							<li>If above fails, restart OBS</li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li>Check that all the cables are securely plugged in <span class="tag">N1</span></li>
+							<li>
+								Right-click on the source ("Slides" or "Camera") &#9656; "Properties" and ensure the correct device is selected <span class="tag">N1</span>
+								<ul>
+									<li>"Slides" source is "ACASIS"</li>
+									<li>"Camera" source is either "HD Pro Webcam C920" or "ACASIS"</li>
+								</ul>
+							</li>
+							<li>If above fails, restart OBS</li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li>Ensure the laptop cooling airflow is not impeded</li>
+							<li>Close all other programs</li>
+							<li>If above fails, inform the chat group <span class="tag">S1</span></li>
+							<li>Ensure the next recording uses the 720p profile ("Profile" option in the menu bar)</li>
+							<li>If the video blacks out or crashes, restart OBS</li>
+						</ul>
+					</li>
+				</ol>
+			</section>
+
+		</div>
+	</div>
+
+	<script src="https://unpkg.com/feather-icons"></script>
+	<script>
+		feather.replace()
+	</script>
+</body>
+</html>
+

@@ -4,6 +4,10 @@ event:
   id: 2020.fossasia.org
   title: FOSSASIA Summit 2020
 
+# Monitoring
+
+monitoring_server: https://monitoring.fossasia.makerforce.io
+
 # Meta
 
 ansible_python_interpreter: auto
