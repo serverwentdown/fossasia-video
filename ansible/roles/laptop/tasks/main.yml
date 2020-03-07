@@ -1,0 +1,28 @@
+---
+
+- name: copy gdm3 greeter logo
+  become: yes
+  copy: 
+    src: "../../../artwork/{{ item }}.png"
+    dest: "/opt/{{ item }}.png"
+  with_items:
+    - login-logo
+
+- name: write gdm3 greeter config
+  become: yes
+  template:
+    src: greeter.dconf-defaults
+    dest: /etc/gdm3/greeter.dconf-defaults
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+
+- name: reconfigure gdm3
+  become: yes
+  command: dpkg-reconfigure gdm3
+
+- name: install firmware-iwlwifi
+  become: yes
+  apt:
+    state: present
+    name: firmware-iwlwifi

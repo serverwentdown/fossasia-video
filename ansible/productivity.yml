@@ -1,4 +1,0 @@
----
-- hosts: recorders
-  roles:
-    - productivity

@@ -41,3 +41,27 @@
     mode: u=rw,g=r,o=r
   become: yes
   become_user: mixer
+
+- name: ensure autostart folder exists
+  file:
+    path: "{{ mixer_user.home }}/.config/autostart"
+    state: directory
+  become: yes
+  become_user: mixer
+
+- name: automatically start OBS on login
+  file:
+    path: "{{ mixer_user.home }}/.config/autostart/obs-autostart.desktop"
+    src: /usr/share/applications/obs.desktop
+    state: link
+  become: yes
+  become_user: mixer
+  when: autostart
+
+- name: do not automatically start OBS on login
+  file:
+    path: "{{ mixer_user.home }}/.config/autostart/obs-autostart.desktop"
+    state: absent
+  become: yes
+  become_user: mixer
+  when: not autostart

@@ -1,3 +1,6 @@
 [recorders]
 x220-01 ansible_host=fd11:f055:a514::2 ansible_user=opentech room_id= room_type=
 x230-01 ansible_host=fd11:f055:a514::3 ansible_user=opentech room_id=EH2-1 room_type=EH2
+x240-01 ansible_host=fd11:f055:a514::4 ansible_user=opentech room_id= room_type=
+x240-02 ansible_host=fd11:f055:a514::5 ansible_user=opentech room_id= room_type=
+x240-03 ansible_host=fd11:f055:a514::6 ansible_user=opentech room_id= room_type=

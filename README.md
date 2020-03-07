@@ -11,11 +11,13 @@ Looking for the [video recorder's guide](guide.html)?
 
 For the recording machines, get a fresh copy of Debian, and install it with the following settings:
 
+- Keyboard: American
 - Username: opentech
 - Hostname: model-increment
   - Example: x220-01
 - Add GNOME Desktop
 - Add OpenSSH Server
+- Leave Print & System Utilities enabled
 
 If a GNOME Desktop and SSH daemon is already installed, a reinstall is not required but recommended. 
 
@@ -94,11 +96,12 @@ ansible -Kf 8 -kc paramiko -b -i event all -a reboot
 Now, plays can be run like so:
 
 ```
-./play [inventory] [playbook]
-# Which executes the following command
 ansible-playbook -Kf 4 -i [inventory] [playbook]
 # Example:
-./play event recorders.yml
+ansible-playbook -Kf 4 -i event recorders.yml
+ansible-playbook -Kf 4 -i event recorders-stop.yml
+ansible-playbook -Kf 4 -i event reboot.yml
+ansible-playbook -Kf 4 -i event upgrade.yml
 ```
 
 ## Install Wireless Drivers

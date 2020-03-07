@@ -1,0 +1,10 @@
+---
+- hosts: all
+  tasks:
+    - name: upgrade packages
+      become: yes
+      apt:
+        autoclean: yes
+        autoremove: yes
+        update_cache: yes
+        upgrade: yes

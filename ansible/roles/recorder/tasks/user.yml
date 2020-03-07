@@ -24,6 +24,22 @@
     group: root
     mode: u=rw,g=r,o=r
 
+- name: create Pictures directory for wallpaper
+  file:
+    dest: "{{ mixer_user.home }}/Pictures"
+    state: directory
+    mode: u=rwx,g=rx,o=rx
+  become: yes
+  become_user: mixer
+
+- name: copy wallpaper
+  copy:
+    src: "../../../artwork/wallpaper.png"
+    dest: "{{ mixer_user.home }}/Pictures/wallpaper.png"
+    mode: u=rw,g=r,o=r
+  become: yes
+  become_user: mixer
+
 - name: check sleep settings
   command:
     cmd: /usr/bin/gsettings get org.gnome.desktop.session idle-delay
@@ -48,9 +64,21 @@
     - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-printing true
     - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-print-setup true
     - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-save-to-disk true
-    - /usr/bin/gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-    - /usr/bin/gsettings set org.gnome.shell favorite-apps "['obs.desktop', 'org.gnome.Nautilus.desktop', 'firefox.desktop']"
     - /usr/bin/gsettings set org.gnome.desktop.session idle-delay 0
+  become: yes
+  become_user: mixer
+  #when: "'uint32 0' not in idle_delay_setting.stdout"
+
+- name: customize GNOME
+  command:
+    cmd: "{{ item }}"
+  environment:
+    # Required only when setting gsettings
+    DBUS_SESSION_BUS_ADDRESS: "unix:path=/run/user/{{ mixer_user.uid }}/bus"
+  with_items:
+    - /usr/bin/gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+    - /usr/bin/gsettings set org.gnome.desktop.background picture-uri 'file://{{ mixer_user.home }}/Pictures/wallpaper.png'
+    - /usr/bin/gsettings set org.gnome.shell favorite-apps "['obs.desktop', 'org.gnome.Nautilus.desktop', 'firefox-esr.desktop']"
   become: yes
   become_user: mixer
   #when: "'uint32 0' not in idle_delay_setting.stdout"
@@ -64,7 +92,6 @@
     regexp: "^HandleLidSwitch"
     line: "HandleLidSwitch=ignore"
     state: present
-  notify: restart systemd-logind
   when: autostart
 
 - name: allow laptop to sleep when lid is closed
@@ -74,5 +101,4 @@
     regexp: "^HandleLidSwitch"
     line: "HandleLidSwitch=ignore"
     state: absent
-  notify: restart systemd-logind
   when: not autostart

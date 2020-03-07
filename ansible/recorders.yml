@@ -1,5 +1,10 @@
 ---
 - hosts: recorders
   roles:
+    - productivity
+
+- hosts: recorders
+  roles:
+    - role: laptop
     - role: recorder
     - role: monitoring-client
