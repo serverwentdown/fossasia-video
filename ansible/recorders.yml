@@ -7,4 +7,6 @@
   roles:
     - role: laptop
     - role: recorder
-    - role: monitoring-client
+    - role: cloudalchemy.node-exporter
+      tags: node_exporter
+
