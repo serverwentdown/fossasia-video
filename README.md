@@ -3,7 +3,7 @@
 
 The FOSSASIA video recording setup
 
-Looking for the [video recorder's guide](guide.html)?
+Looking for the [video recorder's guide](https://docs.google.com/document/d/1LWKt0kXWGVuPHCLvBBH35frJFtfhQuNIZ7DSS2HNLZI/edit?usp=sharing)?
 
 ## Overview
 
@@ -104,8 +104,9 @@ ansible-playbook -Kf 4 -i event reboot.yml
 ansible-playbook -Kf 4 -i event upgrade.yml
 ```
 
-## Install Wireless Drivers
+And run commands like so:
 
 ```
 ansible -Kf 8 -b -i event all -a 'apt install firmware-iwlwifi'
 ```
+

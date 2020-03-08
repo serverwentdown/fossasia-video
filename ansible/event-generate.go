@@ -38,7 +38,7 @@ func main() {
 }
 
 func discover(host, user string) (hostname, roomId, roomType string, err error) {
-	cmd := exec.Command("/usr/bin/ssh", "-l", user, host, "sh", "-c", "hostname; cat room_id; cat room_type; exit 0")
+	cmd := exec.Command("/usr/bin/ssh", "-l", user, host, "sh", "-c", "hostname; cat room_type; cat room_id; exit 0")
 	fmt.Fprintf(os.Stderr, "command: %s\n", cmd)
 	var out bytes.Buffer
 	cmd.Stdout = &out
@@ -51,9 +51,9 @@ func discover(host, user string) (hostname, roomId, roomType string, err error) 
 		return
 	}
 	hostname = strings.TrimSpace(hostname)
-	roomId, _ = out.ReadString('\n')
-	roomId = strings.TrimSpace(roomId)
 	roomType, _ = out.ReadString('\n')
 	roomType = strings.TrimSpace(roomType)
+	roomId, _ = out.ReadString('\n')
+	roomId = strings.TrimSpace(roomId)
 	return
 }

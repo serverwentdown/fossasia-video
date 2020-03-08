@@ -61,9 +61,9 @@
     - /usr/bin/gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'nothing'
     - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-lock-screen true
     - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-log-out false
-    - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-printing true
-    - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-print-setup true
-    - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-save-to-disk true
+    - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-printing false
+    - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-print-setup false
+    - /usr/bin/gsettings set org.gnome.desktop.lockdown disable-save-to-disk false
     - /usr/bin/gsettings set org.gnome.desktop.session idle-delay 0
   become: yes
   become_user: mixer

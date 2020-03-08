@@ -3,10 +3,14 @@
         "deinterlace_field_order": 0,
         "deinterlace_mode": 0,
         "enabled": true,
-{% if room_type == "EH2" %}
+{% if room_type == "setup1" %}
+        "flags": 2,
+{% elif room_type == "setup2" %}
+        "flags": 2,
+{% elif room_type == "setup3" %}
         "flags": 2,
 {% else %}
-        "flags": 0,
+        "flags": 2,
 {% endif %}
         "hotkeys": {
             "libobs.mute": [],
@@ -25,12 +29,14 @@
         "push-to-talk": false,
         "push-to-talk-delay": 0,
         "settings": {
-{% if room_type == "EH2" %}
+{% if room_type == "setup1" %}
             "device_id": "alsa_input.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo"
-{% elif room_type == "TR9" %}
-            "device_id": "alsa_input.pci-0000_00_1b.0.analog-stereo"
+{% elif room_type == "setup2" %}
+            "device_id": "alsa_input.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo"
+{% elif room_type == "setup3" %}
+            "device_id": "alsa_input.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo"
 {% else %}
-            "device_id": "alsa_input.pci-0000_00_1b.0.analog-stereo"
+            "device_id": "alsa_input.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo"
 {% endif %}
         },
         "sync": 0,
@@ -58,9 +64,11 @@
         "push-to-talk": false,
         "push-to-talk-delay": 0,
         "settings": {
-{% if room_type == "EH2" %}
+{% if room_type == "setup1" %}
             "device_id": "alsa_input.usb-VXIS_Inc_ACASIS-02.analog-stereo"
-{% elif room_type == "TR9" %}
+{% elif room_type == "setup2" %}
+            "device_id": "alsa_input.usb-VXIS_Inc_ACASIS-02.analog-stereo"
+{% elif room_type == "setup3" %}
             "device_id": "alsa_input.usb-VXIS_Inc_ACASIS-02.analog-stereo"
 {% else %}
             "device_id": "alsa_input.usb-VXIS_Inc_ACASIS-02.analog-stereo"
@@ -91,9 +99,11 @@
         "push-to-talk": false,
         "push-to-talk-delay": 0,
         "settings": {
-{% if room_type == "EH2" %}
+{% if room_type == "setup1" %}
             "device_id": "alsa_input.pci-0000_00_1b.0.analog-stereo"
-{% elif room_type == "TR9" %}
+{% elif room_type == "setup2" %}
+            "device_id": "alsa_input.usb-046d_HD_Pro_Webcam_C920_CEB3336F-02.analog-stereo"
+{% elif room_type == "setup3" %}
             "device_id": "alsa_input.usb-046d_HD_Pro_Webcam_C920_CEB3336F-02.analog-stereo"
 {% else %}
             "device_id": "alsa_input.usb-046d_HD_Pro_Webcam_C920_CEB3336F-02.analog-stereo"
@@ -447,7 +457,7 @@
                     "push-to-talk": false,
                     "push-to-talk-delay": 0,
                     "settings": {
-                        "key_color": "4294639610",
+                        "key_color": 4294639610,
                         "key_color_type": "custom",
                         "similarity": 1,
                         "smoothness": 1
@@ -611,7 +621,7 @@
                     "push-to-talk": false,
                     "push-to-talk-delay": 0,
                     "settings": {
-                        "key_color": "4294639610",
+                        "key_color": 4294639610,
                         "key_color_type": "custom",
                         "similarity": 1,
                         "smoothness": 1
@@ -885,9 +895,11 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "buffering": true,
-{% if room_type == "EH2" %}
+{% if room_type == "setup1" %}
+                "device_id": "/dev/v4l/by-path/pci-0000:00:14.0-usb-0:1:1.0-video-index0",{# X230 LEFT BACK PORT #}
+{% elif room_type == "setup2" %}
                 "device_id": "/dev/v4l/by-id/usb-VXIS_Inc_ACASIS-video-index0",
-{% elif room_type == "TR9" %}
+{% elif room_type == "setup3" %}
                 "device_id": "/dev/v4l/by-id/usb-VXIS_Inc_ACASIS-video-index0",
 {% else %}
                 "device_id": "/dev/v4l/by-id/usb-VXIS_Inc_ACASIS-video-index0",
@@ -922,7 +934,7 @@
                     "push-to-talk": false,
                     "push-to-talk-delay": 0,
                     "settings": {
-                        "key_color": "4294639610",
+                        "key_color": 4294639610,
                         "key_color_type": "custom",
                         "similarity": 1,
                         "smoothness": 1
@@ -954,6 +966,34 @@
             "deinterlace_field_order": 0,
             "deinterlace_mode": 0,
             "enabled": true,
+			"filters": [
+				{
+					"deinterlace_field_order": 0,
+					"deinterlace_mode": 0,
+					"enabled": true,
+					"flags": 0,
+					"hotkeys": {},
+					"id": "crop_filter",
+					"mixers": 0,
+					"monitoring_type": 0,
+					"muted": false,
+					"name": "Digital Zoom",
+					"private_settings": {},
+					"push-to-mute": false,
+					"pust-to-mute-delay": 0,
+					"push-to-talk": false,
+					"push-to-talk-delay": 0,
+					"settings": {
+						"bottom": 60,
+						"left": 80,
+						"relative": true,
+						"right": 80,
+						"top": 60
+					},
+					"sync": 0,
+					"volume": 1.0
+				}
+			],
             "flags": 0,
             "hotkeys": {},
             "id": "v4l2_input",
@@ -968,9 +1008,11 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "buffering": true,
-{% if room_type == "EH2" %}
-                "device_id": "/dev/video0",
-{% elif room_type == "TR9" %}
+{% if room_type == "setup1" %}
+                "device_id": "/dev/v4l/by-path/pci-0000:00:14.0-usb-0:2:1.0-video-index0",{# X230 LEFT FRONT PORT #}
+{% elif room_type == "setup2" %}
+                "device_id": "/dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_CEB3336F-video-index0",
+{% elif room_type == "setup3" %}
                 "device_id": "/dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_CEB3336F-video-index0",
 {% else %}
                 "device_id": "/dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_CEB3336F-video-index0",
@@ -1119,7 +1161,7 @@
                     "push-to-talk": false,
                     "push-to-talk-delay": 0,
                     "settings": {
-                        "key_color": "4294639610",
+                        "key_color": 4294639610,
                         "key_color_type": "custom",
                         "similarity": 1,
                         "smoothness": 1
