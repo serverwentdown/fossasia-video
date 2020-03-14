@@ -1,14 +1,12 @@
 ---
 
+room_type: unknown
 room_id: unknown
 
 # Overwrite in inventory if cannot cope
 record_profile: 720p
 # Overwrite in inventory if want to use more storage to use less CPU
 record_fast: false
-
-record_user: mixer
-record_home: /home/mixer
 
 # Set to 2 to enable monitoring, 0 to disable
 monitoring_type: 2
