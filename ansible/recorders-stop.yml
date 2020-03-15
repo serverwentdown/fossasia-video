@@ -1,8 +1,13 @@
 ---
 - hosts: recorders
   roles:
+    - productivity
+
+- hosts: recorders
+  roles:
     - role: laptop
     - role: recorder
-    - role: monitoring-client
+    - role: cloudalchemy.node-exporter
+      tags: node_exporter
   vars:
     autostart: false

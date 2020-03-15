@@ -1,0 +1,11 @@
+---
+
+- name: Log room for node_exporter
+  become: yes
+  copy:
+    content: "room{type=\"{{ room_type }}\",id=\"{{ room_id }}\"} 1\n"
+    dest: "/var/lib/node_exporter/room.prom"
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+

@@ -3,3 +3,4 @@
 - include: packages.yml
 - include: artwork.yml
 - include: obs.yml
+- include: textfile.yml

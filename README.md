@@ -1,9 +1,11 @@
 
 # fossasia-video
 
-The FOSSASIA video recording setup
+The experimental FOSSASIA video recording setup
 
-Looking for the [video recorder's guide](https://docs.google.com/document/d/1LWKt0kXWGVuPHCLvBBH35frJFtfhQuNIZ7DSS2HNLZI/edit?usp=sharing)?
+Looking for the [video recorder's guide](https://docs.google.com/document/d/1LWKt0kXWGVuPHCLvBBH35frJFtfhQuNIZ7DSS2HNLZI/edit)?
+
+There is also the [video equipment sheet](https://docs.google.com/spreadsheets/d/1XLckJRG4ng2NoOfqy-EKca2LJdfC-Z6zfE6Q3FqKoM0/edit)
 
 ## Overview
 

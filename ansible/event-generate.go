@@ -4,10 +4,10 @@ import (
 	"bufio"
 	"bytes"
 	"fmt"
+	"net"
 	"os"
 	"os/exec"
 	"strings"
-	"net"
 )
 
 func main() {
@@ -49,7 +49,7 @@ hostname;
 `
 
 func discover(host, user string) (hostname, roomType, roomId, webcamName string, err error) {
-	cmd := exec.Command("/usr/bin/ssh", "-l", user, host, "sh", "-c", script)
+	cmd := exec.Command("/usr/bin/ssh", "-o", "ConnectTimeout=3", "-l", user, host, "sh", "-c", script)
 	fmt.Fprintf(os.Stderr, "command: %s\n", cmd)
 	var out bytes.Buffer
 	cmd.Stdout = &out
