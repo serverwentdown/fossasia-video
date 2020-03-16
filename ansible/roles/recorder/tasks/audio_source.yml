@@ -1,0 +1,20 @@
+---
+
+- name: remove existing audio_source network
+  command:
+    cmd: nmcli connection delete audio_source
+  ignore_errors: yes
+  become: yes
+  when: room_id == "lecturetheatre"
+
+- name: configure audio_source network
+  command:
+    cmd: nmcli connection add save yes ifname enp0s25 con-name audio_source type ethernet ipv4.method disabled ipv6.method manual ipv6.addresses "fd12:f055:a514:a0a0::2/64" ipv6.never-default true ipv6.addr-gen-mode eui64 ipv6.ignore-auto-dns yes ipv6.ignore-auto-routes yes
+  become: yes
+  when: autostart and room_id == "lecturetheatre"
+
+- name: enable audio_source network
+  command:
+    cmd: nmcli connection up audio_source
+  become: yes
+  when: autostart and room_id == "lecturetheatre"

@@ -1,8 +1,5 @@
 ---
 
-room_type: unknown
-room_id: unknown
-
 # Overwrite in inventory if cannot cope
 record_profile: 720p
 # Overwrite in inventory if want to use more storage to use less CPU

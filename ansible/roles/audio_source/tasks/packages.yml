@@ -1,11 +1,11 @@
 ---
 
-- name: install packages required to be a recorder
+- name: install packages required to be an audio_source
   become: yes
   apt:
     state: latest
     name:
-      - obs-studio
+      - ffmpeg
       # for NetworkManager in audio_source
       - python3-dbus
       - libnm-dev

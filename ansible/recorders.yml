@@ -1,12 +1,16 @@
 ---
-- hosts: recorders
+- hosts: all
   roles:
     - productivity
+    - laptop
+    - role: cloudalchemy.node-exporter
+      tags: node_exporter
 
 - hosts: recorders
   roles:
-    - role: laptop
     - role: recorder
-    - role: cloudalchemy.node-exporter
-      tags: node_exporter
+
+- hosts: audio_source
+  roles:
+    - role: audio_source
 

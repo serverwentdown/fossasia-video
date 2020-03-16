@@ -17,4 +17,4 @@ node_exporter_enabled_collectors:
 
 # Meta
 
-ansible_python_interpreter: auto
+ansible_python_interpreter: /usr/bin/python3

@@ -1,6 +1,6 @@
 ---
 
-- name: Log room for node_exporter
+- name: log room for node_exporter
   become: yes
   copy:
     content: "room{type=\"{{ room_type }}\",id=\"{{ room_id }}\"} 1\n"
@@ -9,3 +9,12 @@
     group: root
     mode: u=rw,g=r,o=r
 
+- name: save room_type into home
+  copy:
+    content: "{{ room_type }}\n"
+    dest: "/home/opentech/room_type"
+
+- name: save room_id into home
+  copy:
+    content: "{{ room_id }}\n"
+    dest: "/home/opentech/room_id"
