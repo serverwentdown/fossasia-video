@@ -31,6 +31,8 @@
     - global.ini
     - basic/profiles/1080p/basic.ini
     - basic/profiles/720p/basic.ini
+    - basic/profiles/1080p/service.json
+    - basic/profiles/720p/service.json
   become: yes
   become_user: mixer
 
