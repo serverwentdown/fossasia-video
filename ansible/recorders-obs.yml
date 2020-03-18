@@ -1,0 +1,7 @@
+---
+
+- hosts: recorders
+  roles:
+    - role: recorder
+      tags: obs
+

@@ -1,7 +1,11 @@
 ---
 - include: user.yml
+  tags: base
 - include: packages.yml
+  tags: base
 - include: artwork.yml
+  tags: base
 - include: obs.yml
-- include: audio_source.yml
+  tags: obs
 - include: textfile.yml
+  tags: base

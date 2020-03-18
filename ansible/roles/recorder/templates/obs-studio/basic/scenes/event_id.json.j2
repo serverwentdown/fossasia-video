@@ -1011,11 +1011,11 @@
 {% if room_type == "setup1" %}
                 "device_id": "/dev/v4l/by-path/pci-0000:00:14.0-usb-0:2:1.0-video-index0",{# X230 LEFT FRONT PORT #}
 {% elif room_type == "setup2" %}
-                "device_id": "/dev/v4l/by-id/usb-{{ webcam_name }}-video-index0",
+                "device_id": "/dev/v4l/by-id/{{ webcam_name }}-video-index0",
 {% elif room_type == "setup3" %}
-                "device_id": "/dev/v4l/by-id/usb-{{ webcam_name }}-video-index0",
+                "device_id": "/dev/v4l/by-id/{{ webcam_name }}-video-index0",
 {% else %}
-                "device_id": "/dev/v4l/by-id/usb-{{ webcam_name }}-video-index0",
+                "device_id": "/dev/v4l/by-id/{{ webcam_name }}-video-index0",
 {% endif %}
                 "framerate": 65566,
                 "input": 0,

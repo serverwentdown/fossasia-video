@@ -9,8 +9,7 @@
 - hosts: recorders
   roles:
     - role: recorder
-
-- hosts: audio_source
-  roles:
-    - role: audio_source
+      tags:
+        - base
+        - obs
 
