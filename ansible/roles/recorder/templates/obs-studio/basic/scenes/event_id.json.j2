@@ -21,7 +21,15 @@
         "id": "pulse_input_capture",
         "mixers": 255,
         "monitoring_type": {{ monitoring_type }},
-        "muted": false,
+{% if room_type == "setup1" %}
+		"muted": false,
+{% elif room_type == "setup2" %}
+		"muted": true,
+{% elif room_type == "setup3" %}
+		"muted": false,
+{% else %}
+		"muted": false,
+{% endif %}
         "name": "Microphone",
         "private_settings": {},
         "push-to-mute": false,
@@ -34,7 +42,7 @@
 {% elif room_type == "setup2" %}
             "device_id": "alsa_input.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo"
 {% elif room_type == "setup3" %}
-            "device_id": ""
+            "device_id": "alsa_input.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo"
 {% else %}
             "device_id": "alsa_input.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo"
 {% endif %}
@@ -56,7 +64,7 @@
         "id": "pulse_input_capture",
         "mixers": 255,
         "monitoring_type": {{ monitoring_type }},
-        "muted": false,
+        "muted": true,
         "name": "Slides Audio",
         "private_settings": {},
         "push-to-mute": false,
@@ -91,7 +99,15 @@
         "id": "pulse_input_capture",
         "mixers": 255,
         "monitoring_type": {{ monitoring_type }},
-        "muted": true,
+{% if room_type == "setup1" %}
+		"muted": true,
+{% elif room_type == "setup2" %}
+		"muted": false,
+{% elif room_type == "setup3" %}
+		"muted": true,
+{% else %}
+		"muted": true,
+{% endif %}
         "name": "Emergency Audio",
         "private_settings": {},
         "push-to-mute": false,
@@ -100,7 +116,7 @@
         "push-to-talk-delay": 0,
         "settings": {
 {% if room_type == "setup1" %}
-            "device_id": "alsa_input.pci-0000_00_1b.0.analog-stereo"
+            "device_id": "alsa_input.{{ webcam_name }}-02.analog-stereo"
 {% elif room_type == "setup2" %}
             "device_id": "alsa_input.{{ webcam_name }}-02.analog-stereo"
 {% elif room_type == "setup3" %}

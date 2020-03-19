@@ -1,0 +1,7 @@
+---
+
+- name: write custom-networking.conf to sysctl.d 
+  template:
+    src: "sysctl-custom-networking.conf"
+    dest: "/etc/sysctl.d/custom-networking.conf"
+  become: yes

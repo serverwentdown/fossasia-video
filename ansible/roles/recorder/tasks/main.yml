@@ -3,9 +3,11 @@
   tags: base
 - include: packages.yml
   tags: base
-- include: artwork.yml
-  tags: base
 - include: obs.yml
   tags: obs
+- include: artwork.yml
+  tags: base
 - include: textfile.yml
+  tags: base
+- include: custom_networking.yml
   tags: base
