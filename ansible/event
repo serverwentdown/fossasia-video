@@ -1,8 +1,7 @@
 [recorders]
-x220-01 ansible_host=fd11:f055:a514::2 ansible_user=opentech room_type=setup1 room_id=eventhall2-1 webcam_name=usb-046d_HD_Pro_Webcam_C920_50EBAE4F
-x230-01 ansible_host=fd11:f055:a514::3 ansible_user=opentech room_type=setup3 room_id=lecturetheatre webcam_name=usb-046d_HD_Pro_Webcam_C920_CEB3336F
-x240-01 ansible_host=fd11:f055:a514::4 ansible_user=opentech room_type=setup1 room_id=eventhall2-2 webcam_name=
-x240-02 ansible_host=fd11:f055:a514::5 ansible_user=opentech room_type=setup2 room_id=trainingroom2-1 webcam_name=
-x240-03 ansible_host=fd11:f055:a514::6 ansible_user=opentech room_type=setup2 room_id=trainingroom2-2 webcam_name=
-[audio_source]
-x220-02 ansible_host=fd11:f055:a514::7 ansible_user=opentech room_type=setup3 room_id= webcam_name=usb-046d_HD_Pro_Webcam_C920_312AF46F
+x220-01 ansible_host=fd11:f055:a514::2 ansible_user=opentech room_type=setup2 room_id=eventhall2-2 webcam_name=usb-046d_HD_Pro_Webcam_C920_312AF46F stream_key=v2vt-dpz2-ak9q-0uyu
+x230-01 ansible_host=fd11:f055:a514::3 ansible_user=opentech room_type=setup3 room_id=eventhall2-1 webcam_name=usb-046d_HD_Pro_Webcam_C920_50EBAE4F stream_key=0f01-2aac-77f7-e14j
+x240-01 ansible_host=fd11:f055:a514::4 ansible_user=opentech room_type=setup3 room_id=lecturetheatre webcam_name=usb-046d_HD_Pro_Webcam_C920_86CB031F stream_key=ghmg-59hj-5ff2-1f9w
+x240-02 ansible_host=fd11:f055:a514::5 ansible_user=opentech room_type=setup2 room_id=trainingroom2-1 webcam_name=usb-046d_HD_Pro_Webcam_C920_CEB3336F stream_key=9m6x-pdms-mpap-fj2b
+x240-03 ansible_host=fd11:f055:a514::6 ansible_user=opentech room_type= room_id= webcam_name= stream_key= autostart=false
+x220-02 ansible_host=fd11:f055:a514::7 ansible_user=opentech room_type=setup2 room_id=trainingroom2-2 webcam_name=usb-046d_HD_Pro_Webcam_C920_EE8F1BFF stream_key=rm93-xysx-kb6j-10y2
